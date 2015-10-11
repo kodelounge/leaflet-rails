@@ -1737,13 +1737,14 @@ L.Map = L.Class.extend({
 	},
 
 	invalidateSize: function (options) {
+		console.log("Leaflet invalidated size.");
 		if (!this._loaded) { return this; }
 
 		options = L.extend({
 			animate: false,
 			pan: true
 		}, options === true ? {animate: true} : options);
-
+		debugger
 		var oldSize = this.getSize();
 		this._sizeChanged = true;
 		this._initialCenter = null;
@@ -1753,7 +1754,7 @@ L.Map = L.Class.extend({
 		    newCenter = newSize.divideBy(2).round(),
 		    offset = oldCenter.subtract(newCenter);
 
-		//if (!offset.x && !offset.y) { return this; }
+		// if (!offset.x && !offset.y) { return this; }
 
 		if (options.animate && options.pan) {
 			this.panBy(offset);
